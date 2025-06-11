@@ -1,8 +1,9 @@
 "use client"
 
+import { Post } from "@/app/models/posts/types";
 import ErrorMessage from "../../components/atoms/ErrorMessage";
 import Loading from "../../components/atoms/Loading";
-import useQueryPostList, { Post } from "../../hooks/useQueryPostList";
+import useQueryPostList from "../../hooks/useQueryPostList";
 import EmptyMessage from "../EmptyMessage";
 import Introduction from "../Introduction";
 import PostCard from "../PostCard";

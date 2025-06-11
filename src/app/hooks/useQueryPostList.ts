@@ -1,43 +1,23 @@
-import axios from "axios";
+import axiosInstance from "../axios";
 import { useQuery } from "@tanstack/react-query";
+import { PostDto, Post } from "../models/posts/types";
+import { toModel } from "../models/posts";
 
 export const QUERY_MY_POSTS = "QUERY_MY_POSTS";
-
-export interface PostDto {
-  id: string;
-  tag: string;
-  title: string;
-  description: string;
-  content: string;
-  category: string;
-  created_at: Date;
-}
-
-export interface Post {
-  id: string;
-  tag: string;
-  title: string;
-  description: string;
-  content: string;
-  category: string;
-  created_at: Date;
-}
-
-const axiosInstance = axios.create({
-  baseURL: 'http://localhost:4000',
-});
 
 const queryPostList: () => Promise<Post[]> = async () => {
   const response = await axiosInstance.get<{
     data: PostDto[];
   }>("/api/posts");
-  return response.data?.data?.map((postDto) => ({
-    ...postDto,
-    createdAt: postDto?.created_at ? new Date(postDto?.created_at) : undefined,
-  }));
+
+  // return response.data?.data?.map((postDto) => toModel(postDto));\
+  return Array.isArray(response.data?.data)
+  ? response.data.data.map((postDto) => toModel(postDto))
+  : [];
 };
 
 const useQueryPostList = (initialData?: Post[]) => {
+  console.log("hi")
   return useQuery({
     queryKey:[QUERY_MY_POSTS], 
     queryFn: queryPostList,

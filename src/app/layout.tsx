@@ -37,7 +37,7 @@ export default function RootLayout({
                 <div className="flex h-16 justify-between">
                   <div className="flex items-center">
                     <div className=" text-lg md:text-3xl font-semibold">
-                      Lani Blog
+                      My Blog
                     </div>
                   </div>
                 </div>
