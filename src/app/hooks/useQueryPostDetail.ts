@@ -17,7 +17,7 @@ export const queryPostDetail = async ({ queryKey }: { queryKey: any[] }) => {
 
 const useQueryPostDetail = (postId: string, initialData?: Post) => {
   return useQuery({
-    queryKey:[QUERY_POST_DETAIL, postId], 
+    queryKey:[QUERY_POST_DETAIL, { postId }], 
     queryFn: queryPostDetail,
     initialData,
   });

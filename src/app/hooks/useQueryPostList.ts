@@ -17,7 +17,6 @@ const queryPostList: () => Promise<Post[]> = async () => {
 };
 
 const useQueryPostList = (initialData?: Post[]) => {
-  console.log("hi")
   return useQuery({
     queryKey:[QUERY_MY_POSTS], 
     queryFn: queryPostList,
