@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
+import QueryContext from "./contexts/QueryContext";
+
+const inter = Inter({ 
+  subsets:["latin"]
+})
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,10 +29,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={inter.className}>
+        <QueryContext>
+          <div className="min-h-full">
+            <header className="border-b border-gray-200 bg-white">
+              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                <div className="flex h-16 justify-between">
+                  <div className="flex items-center">
+                    <div className=" text-lg md:text-3xl font-semibold">
+                      My Blog
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </header>
+            {children}
+          </div>
+        </QueryContext>
       </body>
     </html>
   );
