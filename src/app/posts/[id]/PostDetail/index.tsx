@@ -40,6 +40,9 @@ const PostDetail: React.FC<PostDetailProps> = (post) => {
             <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
           )}
         </div>
+        <div className="mt-10 mb-8 text-center text-sm font-bold leading-9 tracking-tight text-gray-900">
+          {post.category}
+        </div>
       </div>
     </div>
   );

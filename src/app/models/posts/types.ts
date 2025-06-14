@@ -1,3 +1,4 @@
+//Backend API format 
 export interface PostDto {
   id: string;
   tag: string;
@@ -5,9 +6,10 @@ export interface PostDto {
   description: string;
   content: string;
   category: string;
-  created_at?: Date;
+  created_at: Date;
 }
 
+//Frontend format
 export interface Post {
   id: string;
   tag: string;
@@ -15,5 +17,5 @@ export interface Post {
   description: string;
   content: string;
   category: string;
-  createdAt?: Date;
+  createdAt: Date;
 }

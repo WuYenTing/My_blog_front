@@ -21,9 +21,6 @@ const PostCard: React.FC<PostItemProps> = ({
 }) => {
   return (
     <div key={id} className="max-w-xl">
-      <div>
-        {id}
-      </div>
       <div className="flex items-center gap-x-4 text-xs">
         <time dateTime={createdAt?.toString()} className="text-gray-500">
           {createdAt?.toLocaleDateString()}
