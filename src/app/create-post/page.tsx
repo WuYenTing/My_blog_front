@@ -1,4 +1,5 @@
 "use client";
+import { signIn, useSession } from "next-auth/react";
 
 import useCreatePost, { CreatePostParams } from "@/app/hooks/useCreatePost";
 import { useRouter } from "next/navigation";
@@ -9,8 +10,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import FormInput from "../components/form/FormInput";
 import FormMarkDownInput from "../components/form/FormMarkDownInput";
 import Button from "../components/atoms/Button";
+import { useEffect } from "react";
+import Loading from "../components/atoms/Loading";
 
 const CreatePost: React.FC = () => {
+  const { status } = useSession();
+
   const router = useRouter();
   const schema = yup.object().shape({
     title: yup.string().nullable().required("Please input title"),
@@ -31,17 +36,35 @@ const CreatePost: React.FC = () => {
   const { mutate: createPost, isPending: isSubmitting } = useCreatePost(
     (data) => {
       toast.success("Post created successfully");
-      data?.id && router.push(`/posts/${data.id}`);
+      if (data?.id) {
+        router.push(`/posts/${data.id}`);
+      }
     },
     () => {
       toast.error("Something went wrong while creating post");
     }
   );
 
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      signIn();
+    }
+  }, [status]);
+
   const onSubmit = (values: CreatePostParams) =>
     createPost({
       ...values,
     });
+
+  if (status === "loading")
+    return (
+      <div className="my-24">
+        <Loading />
+      </div>
+    );
+
+  if (status !== "authenticated") 
+    return null;
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

@@ -2,6 +2,7 @@ import Toast from "./components/atoms/Toast";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import QueryContext from "./contexts/QueryContext";
+import AuthContext from "./contexts/AuthContext";
 
 const inter = Inter({ 
   subsets:["latin"]
@@ -21,22 +22,24 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Toast />
-        <QueryContext>
-          <div className="min-h-full">
-            <header className="border-b border-gray-200 bg-white">
-              <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div className="flex h-16 justify-between">
-                  <div className="flex items-center">
-                    <div className=" text-lg md:text-3xl font-semibold">
-                      My Blog
+        <AuthContext>
+          <QueryContext>
+            <div className="min-h-full">
+              <header className="border-b border-gray-200 bg-white">
+                <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+                  <div className="flex h-16 justify-between">
+                    <div className="flex items-center">
+                      <div className=" text-lg md:text-3xl font-semibold">
+                        My Blog
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </header>
-            {children}
-          </div>
-        </QueryContext>
+              </header>
+              {children}
+            </div>
+          </QueryContext>
+        </AuthContext>
       </body>
     </html>
   );
