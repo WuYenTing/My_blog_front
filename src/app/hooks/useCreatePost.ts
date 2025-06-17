@@ -6,15 +6,17 @@ import { toModel } from "../models/posts";
 export type CreatePostParams = Pick<
   Post,
   "title" | "description" | "content" | "category" | "tag"
->;
+> & {
+  accessToken?: string;
+};
 
 const onMutate = async (params: CreatePostParams) => {
-  const { title, description, content, category, tag } = params;
+  const { title, description, content, category, tag, accessToken } = params;
 
   const response = await axios.post<{
     data: PostDto;
   }>(
-    `/api/posts`,
+    `/api/my-posts`,
     {
       data: {
         title,
@@ -24,6 +26,11 @@ const onMutate = async (params: CreatePostParams) => {
         tag,
       },
     },
+    {
+      headers: {
+        Authorization: accessToken,
+      },
+    }
   );
 
   return toModel(response.data?.data);

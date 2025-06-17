@@ -1,6 +1,5 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
-
 import useCreatePost, { CreatePostParams } from "@/app/hooks/useCreatePost";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -14,7 +13,7 @@ import { useEffect } from "react";
 import Loading from "../components/atoms/Loading";
 
 const CreatePost: React.FC = () => {
-  const { status } = useSession();
+  const { data: session, status } = useSession();
 
   const router = useRouter();
   const schema = yup.object().shape({
@@ -54,6 +53,7 @@ const CreatePost: React.FC = () => {
   const onSubmit = (values: CreatePostParams) =>
     createPost({
       ...values,
+      accessToken: session?.accessToken,
     });
 
   if (status === "loading")
@@ -63,8 +63,7 @@ const CreatePost: React.FC = () => {
       </div>
     );
 
-  if (status !== "authenticated") 
-    return null;
+  if (status !== "authenticated") return null;
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -94,20 +93,6 @@ const CreatePost: React.FC = () => {
             control={control}
             name="content"
             error={errors.content}
-          />
-          <FormInput
-            containerClassName="max-w-md mx-auto"
-            label="Category"
-            name="category"
-            control={control}
-            error={errors.category}
-          />
-          <FormInput
-            containerClassName="max-w-md mx-auto"
-            label="Tag"
-            name="tag"
-            control={control}
-            error={errors.tag}
           />
           <div className="w-full flex items-center justify-center space-x-2">
             <Button

@@ -6,7 +6,7 @@ export interface PostDto {
   description: string;
   content: string;
   category: string;
-  created_at: Date;
+  created_at?: Date;
 }
 
 //Frontend format
@@ -17,5 +17,5 @@ export interface Post {
   description: string;
   content: string;
   category: string;
-  createdAt: Date;
+  createdAt?: Date;
 }
