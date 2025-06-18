@@ -8,7 +8,7 @@ import Loading from "../../components/atoms/Loading";
 import useQueryPostList from "../../hooks/useQueryPostList";
 import EmptyMessage from "../EmptyMessage";
 import Introduction from "../Introduction";
-import PostCard from "../PostCard";
+import PostCard from "@/app/components/PostCard";
 
 interface PostListProps {
   posts: Post[];

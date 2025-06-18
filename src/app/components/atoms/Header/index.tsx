@@ -22,6 +22,12 @@ const Header: React.FC = () => {
 
   const userNavigation = [
     {
+      name: "My Posts",
+      onClick: () => {
+        router.push("/my-posts");
+      },
+    },
+    {
       name: "Sign out",
       onClick: () => signOut(),
     },

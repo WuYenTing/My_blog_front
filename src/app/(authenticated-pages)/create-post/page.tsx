@@ -1,16 +1,14 @@
 "use client";
-import { signIn, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import useCreatePost, { CreatePostParams } from "@/app/hooks/useCreatePost";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import FormInput from "../components/form/FormInput";
-import FormMarkDownInput from "../components/form/FormMarkDownInput";
-import Button from "../components/atoms/Button";
-import { useEffect } from "react";
-import Loading from "../components/atoms/Loading";
+import FormInput from "../../components/form/FormInput";
+import FormMarkDownInput from "../../components/form/FormMarkDownInput";
+import Button from "../../components/atoms/Button";
 
 const CreatePost: React.FC = () => {
   const { data: session, status } = useSession();
@@ -44,26 +42,11 @@ const CreatePost: React.FC = () => {
     }
   );
 
-  useEffect(() => {
-    if (status === "unauthenticated") {
-      signIn();
-    }
-  }, [status]);
-
   const onSubmit = (values: CreatePostParams) =>
     createPost({
       ...values,
       accessToken: session?.accessToken,
     });
-
-  if (status === "loading")
-    return (
-      <div className="my-24">
-        <Loading />
-      </div>
-    );
-
-  if (status !== "authenticated") return null;
 
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
