@@ -15,14 +15,14 @@ interface PostListProps {
 }
 
 const PostList: React.FC<PostListProps> = ({ posts }) => {
-  const { data: postList, isLoading, isError} = useQueryPostList(posts);
+  const { data: postList, isPending, isError} = useQueryPostList(posts);
   const router = useRouter();
 
   const onGoToCreatePage = () => {
     router.push("/create-post");
   };
   
-  if (isLoading) 
+  if (isPending) 
     return(
       <div className="my-24">
         <Loading />

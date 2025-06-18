@@ -13,13 +13,13 @@ interface PostDetailProps extends Post {}
 const PostDetail: React.FC<PostDetailProps> = (post) => {
   const {
     data: postDetail,
-    isLoading,
+    isPending,
     isError,
   } = useQueryPostDetail(post.id, post);
 
   const { title, content } = postDetail || {};
 
-  if (isLoading)
+  if (isPending)
     return (
       <div className="my-24">
         <Loading />
