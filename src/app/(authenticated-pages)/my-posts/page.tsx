@@ -1,10 +1,10 @@
 "use client";
 
+import PostCard from "@/app/components/PostCard";
 import Button from "@/app/components/atoms/Button";
 import ErrorMessage from "@/app/components/atoms/ErrorMessage";
 import Loading from "@/app/components/atoms/Loading";
 import useQueryMyPosts from "@/app/hooks/useQueryMyPostList";
-import PostCard from "@/app/components/PostCard";
 import { useRouter } from "next/navigation";
 
 const MyPosts: React.FC = () => {
@@ -20,6 +20,11 @@ const MyPosts: React.FC = () => {
 
   if (isError)
     return <ErrorMessage />;
+
+  const onUpdate = (id: string) => () => router.push(`/update-post/${id}`);
+  const onDelete = (id: string) => () => {
+    // implement later
+  };
 
   return (
     <div className="bg-white py-12">
@@ -41,11 +46,14 @@ const MyPosts: React.FC = () => {
           </div>
         ) : (
           <div className="mt-12 mx-auto grid max-w-7xl grid-cols-1 gap-x-8 gap-y-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-            {posts?.map(
-              (post) =>(
-                <PostCard key={post.id} {...post} />
-              )
-            )}
+            {posts?.map((post) =>(
+              <PostCard
+                key={post.id}
+                {...post}
+                onUpdate={onUpdate(post.id)}
+                onDelete={onDelete(post.id)}
+              />
+            ))}
           </div>
         )}
       </div>

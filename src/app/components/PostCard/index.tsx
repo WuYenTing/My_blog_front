@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import Button from "../atoms/Button";
 
 interface PostItemProps {
   id: string;
@@ -8,6 +11,8 @@ interface PostItemProps {
   content: string;
   category: string;
   createdAt?: Date;
+  onUpdate?: () => void;
+  onDelete?: () => void;
 }
 
 const PostCard: React.FC<PostItemProps> = ({
@@ -18,7 +23,10 @@ const PostCard: React.FC<PostItemProps> = ({
   content,
   category,
   createdAt,
+  onUpdate,
+  onDelete,
 }) => {
+  const canEdit = onUpdate && onDelete;
   return (
     <div key={id} className="max-w-xl">
       <div className="flex items-center gap-x-4 text-xs">
@@ -43,6 +51,16 @@ const PostCard: React.FC<PostItemProps> = ({
           {tag}
         </p>
       </div>
+      {canEdit && (
+        <div className="mt-4 flex space-x-2 w-full">
+          <Button variant="white" className="!w-full flex-1" onClick={onUpdate}>
+            Edit
+          </Button>
+          <Button variant="red" className="!w-full flex-1" onClick={onDelete}>
+            Delete
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

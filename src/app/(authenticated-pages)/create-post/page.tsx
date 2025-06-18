@@ -1,34 +1,14 @@
 "use client";
+
 import { useSession } from "next-auth/react";
 import useCreatePost, { CreatePostParams } from "@/app/hooks/useCreatePost";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
-import * as yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import FormInput from "../../components/form/FormInput";
-import FormMarkDownInput from "../../components/form/FormMarkDownInput";
-import Button from "../../components/atoms/Button";
+import PostForm from "@/app/components/PostForm";
 
 const CreatePost: React.FC = () => {
-  const { data: session, status } = useSession();
-
+  const { data: session } = useSession();
   const router = useRouter();
-  const schema = yup.object().shape({
-    title: yup.string().nullable().required("Please input title"),
-    description: yup.string().nullable().required("Please input description"),
-    content: yup.string().nullable().required("Please input content"),
-    category: yup.string().nullable().required("Please input category"),
-    tag: yup.string().nullable().required("Please input tag"),
-  });
-
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<CreatePostParams>({
-    resolver: yupResolver(schema),
-  });
 
   const { mutate: createPost, isPending: isSubmitting } = useCreatePost(
     (data) => {
@@ -56,54 +36,11 @@ const CreatePost: React.FC = () => {
         </h2>
       </div>
       <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-7xl px-8">
-        <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-          <FormInput
-            label="Title"
-            name="title"
-            containerClassName="max-w-md mx-auto"
-            control={control}
-            error={errors.title}
-          />
-          <FormInput
-            containerClassName="max-w-md mx-auto"
-            label="Description"
-            name="description"
-            control={control}
-            error={errors.description}
-          />
-          <FormInput
-            containerClassName="max-w-md mx-auto"
-            label="Category"
-            name="category"
-            control={control}
-            error={errors.category}
-          />
-          <FormInput
-            containerClassName="max-w-md mx-auto"
-            label="Tag"
-            name="tag"
-            control={control}
-            error={errors.tag}
-          />
-          <FormMarkDownInput
-            label={"Content"}
-            control={control}
-            name="content"
-            error={errors.content}
-          />
-          <div className="w-full flex items-center justify-center space-x-2">
-            <Button
-              className="!w-32"
-              variant="white"
-              onClick={() => router.back()}
-            >
-              Back
-            </Button>
-            <Button className="!w-32" type="submit" loading={isSubmitting}>
-              Create Post
-            </Button>
-          </div>
-        </form>
+        <PostForm
+          isPending={isSubmitting}
+          onSubmit={onSubmit}
+          buttonLabel="Create Post"
+        />
       </div>
     </div>
   );
