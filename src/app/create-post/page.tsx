@@ -88,6 +88,20 @@ const CreatePost: React.FC = () => {
             control={control}
             error={errors.description}
           />
+          <FormInput
+            containerClassName="max-w-md mx-auto"
+            label="Category"
+            name="category"
+            control={control}
+            error={errors.category}
+          />
+          <FormInput
+            containerClassName="max-w-md mx-auto"
+            label="Tag"
+            name="tag"
+            control={control}
+            error={errors.tag}
+          />
           <FormMarkDownInput
             label={"Content"}
             control={control}

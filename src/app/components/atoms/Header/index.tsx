@@ -1,7 +1,7 @@
 "use client"
 
 import { Fragment } from "react";
-import { Disclosure, Menu, Transition } from "@headlessui/react";
+import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems, Transition } from "@headlessui/react";
 import {
   Bars3Icon,
   ChevronDownIcon,
@@ -69,10 +69,10 @@ const Header: React.FC = () => {
                   <>
                     <Menu as="div" className="relative ml-3">
                       <div>
-                        <Menu.Button className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 space-x-2">
+                        <MenuButton className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 space-x-2">
                           <div className="text-lg">{userEmail}</div>
                           <ChevronDownIcon className="h-4 w-4" />
-                        </Menu.Button>
+                        </MenuButton>
                       </div>
                       <Transition
                         as={Fragment}
@@ -83,9 +83,9 @@ const Header: React.FC = () => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                           {userNavigation.map((item) => (
-                            <Menu.Item key={item.name}>
+                            <MenuItem key={item.name}>
                               {({ active }) => (
                                 <button
                                   onClick={item.onClick}
@@ -97,41 +97,41 @@ const Header: React.FC = () => {
                                   {item.name}
                                 </button>
                               )}
-                            </Menu.Item>
+                            </MenuItem>
                           ))}
-                        </Menu.Items>
+                        </MenuItems>
                       </Transition>
                     </Menu>
                   </>
                 )}
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
-                <Disclosure.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <DisclosureButton className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
                   ) : (
                     <Bars3Icon className="block h-6 w-6" aria-hidden="true" />
                   )}
-                </Disclosure.Button>
+                </DisclosureButton>
               </div>
             </div>
           </div>
 
-          <Disclosure.Panel className="sm:hidden">
+          <DisclosurePanel className="sm:hidden">
             <div className="border-t border-gray-200 pb-3 pt-4">
               {status === "loading" && <Loading />}
               {status === "unauthenticated" && (
                 <div className="space-y-1">
                   {unAuthorizeNavigation.map((nav) => (
-                    <Disclosure.Button
+                    <DisclosureButton
                       key={nav.name}
                       as="button"
                       onClick={nav.onClick}
                       className="w-full  text-left block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                     >
                       {nav.name}
-                    </Disclosure.Button>
+                    </DisclosureButton>
                   ))}
                 </div>
               )}
@@ -140,20 +140,20 @@ const Header: React.FC = () => {
                   <div className="px-4 text-lg">{userEmail}</div>
                   <div className="mt-3 space-y-1">
                     {userNavigation.map((item) => (
-                      <Disclosure.Button
+                      <DisclosureButton
                         key={item.name}
                         as="button"
                         onClick={item.onClick}
                         className="w-full  text-left block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                       >
                         {item.name}
-                      </Disclosure.Button>
+                      </DisclosureButton>
                     ))}
                   </div>
                 </>
               )}
             </div>
-          </Disclosure.Panel>
+          </DisclosurePanel>
         </>
       )}
     </Disclosure>
