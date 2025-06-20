@@ -30,8 +30,8 @@ const PostCard: React.FC<PostItemProps> = ({
   return (
     <div key={id} className="max-w-xl">
       <div className="flex items-center gap-x-4 text-xs">
-        <time dateTime={createdAt?.toLocaleString()} className="text-gray-500">
-          {createdAt?.toLocaleString()}
+        <time dateTime={createdAt?.toISOString()} className="text-gray-500">
+          {createdAt?.toISOString()}
         </time>
       </div>
       <div className="group relative">
