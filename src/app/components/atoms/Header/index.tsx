@@ -14,6 +14,13 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Loading from "@/app/components/atoms/Loading";
 
+// const MenuButtonclassName = "flex w-full max-w-xs items-center gap-2 rounded-lg px-3 py-1.5 data-focus:bg-white/10 space-x-2 focus:ring-offset-2 focus:ring-black";
+const MenuButtonclassName = "flex max-w-xs space-x-2 px-2 items-center rounded-lg bg-emerald-50/10 hover:bg-emerald-50/30 text-sm text-gray-200 border border-gray-300 shadow-sm focus:outline-none focus:ring-transparent";
+// const MenuItemsclassName = "absolute w-52 origin-top-right rounded-xl border border-white/5 bg-white/5 p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:--spacing(1)] focus:outline-none data-closed:scale-95 data-closed:opacity-0";
+                        // <MenuButton className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 space-x-2"></MenuButton>
+const MenuItemsclassName = "absolute right-0 z-10 mt-2 w-48 rounded-lg bg-emerald-950 shadow-lg border border-gray-300 p-1 border-opacity-5 focus:outline-none";
+const MenuItemclassName = "";
+
 const Header: React.FC = () => {
   const { status, data: session } = useSession();
   const router = useRouter();
@@ -47,14 +54,14 @@ const Header: React.FC = () => {
   ];
 
   return (
-    <Disclosure as="header" className="border-b border-gray-200 bg-white">
+    <Disclosure as="header" className="border-b border-gray-600 bg-emerald-950">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <Link href="/" className="flex items-center">
-                  <div className=" text-lg md:text-3xl font-semibold">
+                  <div className="text-2xl md:text-3xl font-semibold text-white">
                     My Blog
                   </div>
                 </Link>
@@ -75,7 +82,7 @@ const Header: React.FC = () => {
                   <>
                     <Menu as="div" className="relative ml-3">
                       <div>
-                        <MenuButton className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 space-x-2">
+                        <MenuButton className={MenuButtonclassName}>
                           <div className="text-lg">{userEmail}</div>
                           <ChevronDownIcon className="h-4 w-4" />
                         </MenuButton>
@@ -89,15 +96,15 @@ const Header: React.FC = () => {
                         leaveFrom="transform opacity-100 scale-100"
                         leaveTo="transform opacity-0 scale-95"
                       >
-                        <MenuItems className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                        <MenuItems className={MenuItemsclassName}>
                           {userNavigation.map((item) => (
                             <MenuItem key={item.name}>
-                              {({ active }) => (
+                              {({ focus }) => (
                                 <button
                                   onClick={item.onClick}
                                   className={classNames(
-                                    active ? "bg-gray-100" : "",
-                                    "w-full text-right block px-4 py-2 text-sm text-gray-700"
+                                    focus ? "bg-gray-100/10 hover:text-gray-200" : "",
+                                    "w-full text-center block px-4 py-2 text-sm text-gray-400 rounded-lg"
                                   )}
                                 >
                                   {item.name}

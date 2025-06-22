@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Button from "../atoms/Button";
+import Image from "next/image";
 
 interface PostItemProps {
   id: string;
@@ -28,28 +29,26 @@ const PostCard: React.FC<PostItemProps> = ({
 }) => {
   const canEdit = onUpdate && onDelete;
   return (
-    <div key={id} className="max-w-xl">
-      <div className="flex items-center gap-x-4 text-xs">
-        <time dateTime={createdAt?.toISOString()} className="text-gray-500">
-          {createdAt?.toISOString()}
-        </time>
+    <div key={id} className="flex flex-col max-w-full rounded-xl min-h-96">
+      <div className="">
       </div>
-      <div className="group relative">
-        <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-          <Link href={`/posts/${id}`}>{title}</Link>
+      <div className="flex flex-col group relative gap-5 mt-5 mx-5">
+        <h3 className="line-clamp-2 text-center text-xl leading-6 text-gray-100 min-h-12 font-bold">
+          {title}
         </h3>
-        <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+        <p className="line-clamp-3 text-center text-lg leading-6 text-gray-300 min-h-18 font-semibold">
           {description}
         </p>
-        <p>
+        <p className="line-clamp-5 text-justify text-sm leading-6 text-emerald-50 min-h-30">
           {content}
         </p>
-        <p>
-          {category}
-        </p>
-        <p>
-          {tag}
-        </p>
+      </div>
+      <div className="flex justify-center mx-5 mb-5 mt-auto">
+        <Link href={`/posts/${id}`}>
+          <Button className="bg-emerald-50/30 hover:bg-emerald-50/50">
+            Read More
+          </Button>
+        </Link>
       </div>
       {canEdit && (
         <div className="mt-4 flex space-x-2 w-full">

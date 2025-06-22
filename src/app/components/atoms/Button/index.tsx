@@ -1,7 +1,7 @@
 import classNames from "classnames";
 
 const sizeClasses = {
-  default: "px-4 py-2 text-sm font-medium rounded-md",
+  default: "px-4 py-2 text-sm font-medium rounded-lg",
   sm: "px-2.5 py-2 text-xs font-medium rounded",
 };
 
@@ -58,6 +58,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
         className
       )}
       disabled={disabled || loading}
+
       {...rest}
     >
       {loading ? (

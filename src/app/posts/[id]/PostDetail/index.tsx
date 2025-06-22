@@ -29,18 +29,21 @@ const PostDetail: React.FC<PostDetailProps> = (post) => {
   if (isError) return <ErrorMessage />;
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
-      <div className="sm:mx-auto sm:w-full sm:max-w-7xl"></div>
+    <div className="flex min-h-screen flex-col px-6 lg:px-8 bg-emerald-950">
       <div className="mt-6 sm:mx-auto sm:w-full sm:max-w-7xl px-8">
         <div className="prose w-full min-w-full max-w-full">
-          <h1 className="mt-10 mb-8 text-center text-3xl font-bold leading-9 tracking-tight text-gray-900">
+          <h1 className="mt-10 mb-8 text-center text-4xl font-bold leading-9 tracking-tight text-gray-100">
             {title}
           </h1>
+          <div className="text-justify text-emerald-50">
           {content && (
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-          )}
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {content}
+            </ReactMarkdown>
+          )}  
+          </div>
         </div>
-        <div className="mt-10 mb-8 text-center text-sm font-bold leading-9 tracking-tight text-gray-900">
+        <div className="mt-10 mb-8 text-center text-sm font-bold leading-9 tracking-tight text-gray-100">
           {post.category}
         </div>
       </div>

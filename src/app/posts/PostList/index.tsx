@@ -36,18 +36,20 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
   
   return (
     <main>
-      <div className="bg-white py-24">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <Introduction />
-          <div className="mt-8 md:mt-0 md:text-right">
+      <div className="bg-emerald-950 py-12">
+        <div className="mx-auto max-w-7xl px-6 lg:px-8 space-y-4">
+          <div className="">
+          </div>
+            <Introduction />
+          <div className="">
               <Button
-                className="px-6 py-3.5 text-lg font-semibold"
+                className="bg-emerald-50/30 hover:bg-emerald-50/50 text-lg font-semibold"
                 onClick={onGoToCreatePage}
               >
                 Create
               </Button>
             </div>
-          <div className="mx-auto max-w-7xl border-t border-gray-200 pt-10 mt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none">
+          <div className="mx-auto max-w-7xl border-t border-gray-200 pt-10 sm:pt-8 lg:mx-0 lg:max-w-none">
             {postList.length === 0 ? (
               <EmptyMessage />
             ) : (

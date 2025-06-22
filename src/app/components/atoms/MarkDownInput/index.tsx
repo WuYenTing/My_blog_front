@@ -22,20 +22,25 @@ const MarkDownInput: React.FunctionComponent<MarkDownInputProps> = ({
   return (
     <div className='w-full'>
       {label && (
-        <label className="mb-1 block text-sm font-medium text-gray-700">
+        <label className="mb-1 block text-sm font-medium text-gray-200">
           {label}
         </label>
       )}
       <div
         className={classNames(
           'border rounded',
-          isError ? 'border-red-300' : 'broder-gray-100',
+          isError ? 'border-red-300 border-3' : 'broder-gray-100',
         )}
       >
         <MDEditor
+          className="bg-emerald-50/20"
           fullscreen={false}
           value={value}
           onChange={(value) => onChanged && onChanged(value)}
+          textareaProps={{
+            placeholder: 'Please enter Markdown text',
+            color: '#f43f5e',
+          }}
         />
       </div>
       {isError && errorMessage && (

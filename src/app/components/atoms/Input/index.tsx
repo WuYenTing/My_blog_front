@@ -17,9 +17,9 @@ export interface InputProps
 
 const borderStyles = {
   default:
-    "focus:outline-none focus:ring-gray-400 focus:border-gray-400 focus:border-2 border-gray-300",
+    "border-gray-400 border-1 text-emerald-50 focus:outline-none focus:ring-gray-100 focus:border-2 focus:border-gray-100",
   error:
-    "border-red-300 text-red-900 focus:outline-none focus:ring-red-500 focus:border-red-500",
+    "border-red-300 border-1 text-red-900 focus:outline-none focus:ring-red-500 focus:border-2 focus:border-red-500",
 };
 
 const Input: React.FunctionComponent<InputProps> = ({
@@ -45,7 +45,7 @@ const Input: React.FunctionComponent<InputProps> = ({
       {label && (
         <label
           className={classNames(
-            "mb-1 block text-sm font-medium text-gray-700",
+            "mb-1 block text-sm font-medium text-gray-200",
             labelClassNames
           )}
         >
@@ -57,7 +57,7 @@ const Input: React.FunctionComponent<InputProps> = ({
           disabled={disabled}
           value={value}
           className={classNames(
-            "px-3 py-2 shadow-sm block w-full sm:text-sm rounded-md border placeholder-gray-400",
+            "px-3 py-2 shadow-sm block w-full sm:text-sm rounded-lg placeholder-gray-100 bg-emerald-50/20",
             {
               [borderStyles.error]: isError,
               [borderStyles.default]: !isError,

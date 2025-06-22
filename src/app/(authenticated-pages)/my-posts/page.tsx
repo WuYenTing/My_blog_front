@@ -55,7 +55,7 @@ const MyPosts: React.FC = () => {
 
   return (
     <>
-      <div className="bg-white py-12">
+      <div className="bg-emerald-950 py-12 min-h-screen">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl text-center">
             My Posts
