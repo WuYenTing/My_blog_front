@@ -39,14 +39,14 @@ const Header: React.FC = () => {
   const unAuthorizeNavigation = [
     {
       name: "Sign In",
-      variant: "primary" as "primary" | "white",
+      variant: "white" as "primary" | "white",
       onClick: () => signIn(),
     },
-    {
-      name: "Sign Up",
-      variant: "white" as "primary" | "white",
-      onClick: () => router.push("/sign-up"),
-    },
+    // {
+    //   name: "Sign Up",
+    //   variant: "white" as "primary" | "white",
+    //   onClick: () => router.push("/sign-up"),
+    // },
   ];
 
   return (
@@ -146,14 +146,14 @@ const Header: React.FC = () => {
               )}
               {status === "authenticated" && (
                 <>
-                  <div className="px-4 text-lg text-white">{userEmail}</div>
-                  <div className="mt-3 space-y-1">
+                  <div className="px-4 text-lg text-white text-center">{userEmail}</div>
+                  <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
                       <DisclosureButton
                         key={item.name}
                         as="button"
                         onClick={item.onClick}
-                        className="w-full text-left block px-4 py-2 text-base font-medium text-gray-400 hover:bg-gray-100/20 hover:text-gray-100"
+                        className="w-full text-center block px-4 py-2 text-base font-medium text-gray-400 rounded-md hover:bg-gray-100/20 hover:text-gray-100"
                       >
                         {item.name}
                       </DisclosureButton>

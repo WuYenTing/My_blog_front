@@ -20,7 +20,9 @@ const variantClasses = {
   redSolid:
     "border-transparent text-white bg-red-700 bg-opacity-90 hover:bg-opacity-70 focus:ring-red-500",
   emerald:
-    "text-lg text-gray-400 font-semibold bg-emerald-50/20 border-none hover:bg-emerald-50/50 hover:text-white focus:ring-2 focus:ring-green-100/50"
+    "text-lg text-gray-400 font-semibold bg-emerald-50/20 border-none hover:bg-emerald-50/50 hover:text-white focus:ring-2 focus:ring-green-100/50",
+  green:
+    "text-lg text-gray-500 font-semibold bg-teal-200/80 border-none hover:bg-teal-200 hover:text-gray-600 focus:ring-2 focus:ring-green-100/50",
 };
 
 const loadingClasses = {
@@ -29,11 +31,12 @@ const loadingClasses = {
   red: "text-white",
   redSolid: "text-white",
   emerald: "text-gray-400",
+  green: "text-gray-900",
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "default" | "sm";
-  variant?: "primary" | "white" | "red" | "redSolid" | "emerald";
+  variant?: "primary" | "white" | "red" | "redSolid" | "emerald" | "green";
   loading?: boolean;
   disable?: boolean;
   className?: string;

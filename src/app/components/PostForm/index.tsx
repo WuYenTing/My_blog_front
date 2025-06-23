@@ -80,7 +80,7 @@ const PostForm: React.FC<PostFormProps> = ({
         <Button className="!w-32" variant="white" onClick={() => router.back()}>
           Back
         </Button>
-        <Button className="!w-32" type="submit" loading={isPending}>
+        <Button className="!w-32" variant="green" type="submit" loading={isPending}>
           {buttonLabel}
         </Button>
       </div>
