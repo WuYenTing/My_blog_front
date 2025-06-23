@@ -14,12 +14,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Loading from "@/app/components/atoms/Loading";
 
-// const MenuButtonclassName = "flex w-full max-w-xs items-center gap-2 rounded-lg px-3 py-1.5 data-focus:bg-white/10 space-x-2 focus:ring-offset-2 focus:ring-black";
 const MenuButtonclassName = "flex max-w-xs space-x-2 px-2 items-center rounded-lg bg-emerald-50/10 hover:bg-emerald-50/30 text-sm text-gray-200 border border-gray-300 shadow-sm focus:outline-none focus:ring-transparent";
-// const MenuItemsclassName = "absolute w-52 origin-top-right rounded-xl border border-white/5 bg-white/5 p-1 text-sm/6 text-white transition duration-100 ease-out [--anchor-gap:--spacing(1)] focus:outline-none data-closed:scale-95 data-closed:opacity-0";
-                        // <MenuButton className="flex max-w-xs items-center rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 space-x-2"></MenuButton>
 const MenuItemsclassName = "absolute right-0 z-10 mt-2 w-48 rounded-lg bg-emerald-950 shadow-lg border border-gray-300 p-1 border-opacity-5 focus:outline-none";
-const MenuItemclassName = "";
 
 const Header: React.FC = () => {
   const { status, data: session } = useSession();
