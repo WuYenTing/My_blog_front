@@ -1,6 +1,7 @@
 import Toast from "./components/atoms/Toast";
 import AuthContext from "./contexts/AuthContext";
 import Header from "./components/atoms/Header";
+import Footer from "./components/atoms/Footer";
 import QueryContext from "./contexts/QueryContext";
 import "./globals.css";
 import { Inter } from "next/font/google";
@@ -23,6 +24,7 @@ export default function RootLayout({
             <div className="min-h-full">
               <Header />
               {children}
+              <Footer />
             </div>
           </QueryContext>
         </AuthContext>
