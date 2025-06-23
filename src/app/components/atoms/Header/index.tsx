@@ -115,7 +115,7 @@ const Header: React.FC = () => {
                 )}
               </div>
               <div className="-mr-2 flex items-center sm:hidden">
-                <DisclosureButton className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                <DisclosureButton className="inline-flex items-center justify-center rounded-md bg-white/20 p-2 text-gray-400 hover:bg-emerald-400/20 hover:text-gray-500 focus:outline-none focus:ring-1 focus:ring-indigo-50">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
                     <XMarkIcon className="block h-6 w-6" aria-hidden="true" />
@@ -137,7 +137,7 @@ const Header: React.FC = () => {
                       key={nav.name}
                       as="button"
                       onClick={nav.onClick}
-                      className="w-full  text-left block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                      className="w-full text-left block px-4 py-2 text-base font-medium text-gray-300 hover:bg-gray-100 hover:text-gray-800"
                     >
                       {nav.name}
                     </DisclosureButton>
@@ -146,14 +146,14 @@ const Header: React.FC = () => {
               )}
               {status === "authenticated" && (
                 <>
-                  <div className="px-4 text-lg">{userEmail}</div>
+                  <div className="px-4 text-lg text-white">{userEmail}</div>
                   <div className="mt-3 space-y-1">
                     {userNavigation.map((item) => (
                       <DisclosureButton
                         key={item.name}
                         as="button"
                         onClick={item.onClick}
-                        className="w-full  text-left block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                        className="w-full text-left block px-4 py-2 text-base font-medium text-gray-400 hover:bg-gray-100/20 hover:text-gray-100"
                       >
                         {item.name}
                       </DisclosureButton>

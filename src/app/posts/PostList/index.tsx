@@ -41,9 +41,10 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
           <div className="">
           </div>
             <Introduction />
-          <div className="">
+          <div className="flex justify-center">
               <Button
-                className="bg-emerald-50/30 hover:bg-emerald-50/50 text-lg font-semibold"
+                className=""
+                variant="emerald"
                 onClick={onGoToCreatePage}
               >
                 Create

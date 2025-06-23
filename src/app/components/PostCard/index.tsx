@@ -43,9 +43,9 @@ const PostCard: React.FC<PostItemProps> = ({
           {content}
         </p>
       </div>
-      <div className="flex justify-center mx-5 mb-5 mt-auto">
+      <div className="flex justify-center items-end m-5">
         <Link href={`/posts/${id}`}>
-          <Button className="bg-emerald-50/30 hover:bg-emerald-50/50">
+          <Button variant="emerald" className="">
             Read More
           </Button>
         </Link>

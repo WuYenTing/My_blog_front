@@ -12,12 +12,15 @@ const iconClasses = {
 
 const variantClasses = {
   primary:
-    "border-transparent text-white bg-black bg-opacity-90 hover:bg-opacity-70 focus:ring-black",
+    "border-transparent bg-black bg-opacity-90 hover:bg-opacity-70 focus:ring-white",
   white:
-    "border-gray-300 text-gray-700 bg-white hover:bg-gray-100 focus:ring-transparent",
-  red: "border-red-300 text-red-700 bg-white hover:bg-red-100 focus:ring-transparent",
+    "border-gray-300 border-none text-gray-200 bg-white/25 hover:bg-gray-100/50 hover:text-white focus:ring-2 focus:ring-green-100/50",
+  red: 
+    "border-red-300 border-none text-red-200 bg-red-500/25 hover:bg-red-500/50 hover:text-white focus:ring-2 focus:ring-red-500/50",
   redSolid:
     "border-transparent text-white bg-red-700 bg-opacity-90 hover:bg-opacity-70 focus:ring-red-500",
+  emerald:
+    "text-lg text-gray-400 font-semibold bg-emerald-50/20 border-none hover:bg-emerald-50/50 hover:text-white focus:ring-2 focus:ring-green-100/50"
 };
 
 const loadingClasses = {
@@ -25,11 +28,12 @@ const loadingClasses = {
   white: "text-gray-500",
   red: "text-white",
   redSolid: "text-white",
+  emerald: "text-gray-400",
 };
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   size?: "default" | "sm";
-  variant?: "primary" | "white" | "red" | "redSolid";
+  variant?: "primary" | "white" | "red" | "redSolid" | "emerald";
   loading?: boolean;
   disable?: boolean;
   className?: string;
@@ -49,7 +53,7 @@ const Button: React.FunctionComponent<ButtonProps> = ({
     <button
       type={type}
       className={classNames(
-        "inline-flex justify-center items-center border shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2",
+        "inline-flex justify-center items-center border shadow-sm focus:outline-none",
         sizeClasses[size],
         variantClasses[variant],
         {
