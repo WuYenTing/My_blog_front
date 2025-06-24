@@ -62,10 +62,11 @@ const MyPosts: React.FC = () => {
           </h2>
           {!posts || posts?.length === 0 ? (
             <div className="text-center">
-              <div className="mt-6 text-gray-600 text-lg text-center">
+              <div className="mt-6 text-gray-300 text-lg text-center">
                 There is no posts created. Please create the first one.
               </div>
               <Button
+                variant="green"
                 className="mt-4"
                 onClick={() => router.push("/create-post")}
               >

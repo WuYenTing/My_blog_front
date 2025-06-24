@@ -41,14 +41,14 @@ const SignUp: React.FC = () => {
   const onSubmit = (values: SignUpParams) => signUp(values);
 
   return (
-    <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+    <div className="flex min-h-full flex-1 flex-col justify-center px-6 pt-12 pb-84 lg:px-8 bg-emerald-950">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+        <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-100">
           Sign in to your account
         </h2>
       </div>
 
-      <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-sm">
         <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
           <FormInput
             label="User Name"
@@ -70,8 +70,8 @@ const SignUp: React.FC = () => {
             control={control}
             error={errors.confirmPassword}
           />
-          <div>
-            <Button type="submit" className="!w-full" loading={isSubmitting}>
+          <div className="">
+            <Button variant="green" type="submit" className="!w-full" loading={isSubmitting}>
               Sign Up
             </Button>
           </div>
