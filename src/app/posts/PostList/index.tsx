@@ -40,7 +40,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 space-y-4">
           <div className="">
           </div>
-            <Introduction />
+          <Introduction title="From the RoTing" slogan="Learn by trying. Grow by exploring." subslogan="Route it. Learn it. Share it."/>
           <div className="flex justify-center">
               <Button
                 className=""
@@ -50,7 +50,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
                 Create
               </Button>
             </div>
-          <div className="mx-auto max-w-7xl border-t border-gray-200 pt-10 sm:pt-8 lg:mx-0 lg:max-w-none">
+          <div className="mx-auto max-w-7xl border-t border-gray-200/70 pt-10 sm:pt-8 lg:mx-0 lg:max-w-none">
             {postList.length === 0 ? (
               <EmptyMessage />
             ) : (

@@ -3,12 +3,17 @@ import AuthContext from "./contexts/AuthContext";
 import Header from "./components/atoms/Header";
 import Footer from "./components/atoms/Footer";
 import QueryContext from "./contexts/QueryContext";
+import { Metadata } from "next";
 import "./globals.css";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ 
   subsets:["latin"]
 })
+
+export const metadata: Metadata = {
+  title: 'RoTing.co',
+};
 
 export default function RootLayout({
   children,
@@ -22,7 +27,7 @@ export default function RootLayout({
         <AuthContext>
           <QueryContext>
             <div className="min-h-full">
-              <Header />
+              <Header title="RoTing"/>
               {children}
               <Footer />
             </div>
