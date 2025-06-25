@@ -17,7 +17,11 @@ import Loading from "@/app/components/atoms/Loading";
 const MenuButtonclassName = "flex max-w-xs space-x-2 px-2 items-center rounded-lg bg-emerald-50/10 hover:bg-emerald-50/30 text-sm text-gray-200 border border-gray-300 shadow-sm focus:outline-none focus:ring-transparent";
 const MenuItemsclassName = "absolute right-0 z-10 mt-2 w-48 rounded-lg bg-emerald-950 shadow-lg border border-gray-300 p-1 border-opacity-5 focus:outline-none";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  title?: string;
+}
+
+const Header: React.FC<HeaderProps> = ({ title }) => {
   const { status, data: session } = useSession();
   const router = useRouter();
 
@@ -58,7 +62,7 @@ const Header: React.FC = () => {
               <div className="flex">
                 <Link href="/" className="flex items-center">
                   <div className="text-2xl md:text-3xl font-semibold text-white">
-                    My Blog
+                    {title}
                   </div>
                 </Link>
               </div>
