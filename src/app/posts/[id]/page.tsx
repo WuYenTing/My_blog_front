@@ -10,25 +10,27 @@ async function getData(id: string) {
   return res.json();
 }
 
-interface PostDetailProps {
-  params: {
-    id: string;
-  };
-}
+// interface PostDetailProps {
+//   params: {
+//     id: string;
+//   };
+// }
 
-const PostDetailPage: React.FC<PostDetailProps> = async ({ params }) => {
-  const { id } = await params || {};
-
-  const response: any = await getData(id);
-  return <PostDetail {...response.data} />;
-};
-
-export default PostDetailPage;
-
-// export default async function PostDetailPage({ params }: { params: { id: string } }) {
-//   const { id } = params;
+// const PostDetailPage: React.FC<PostDetailProps> = async ({ params }) => {
+//   const { id } = await params || {};
 
 //   const response: any = await getData(id);
-
 //   return <PostDetail {...response.data} />;
-// }
+// };
+
+// export default PostDetailPage;
+
+// https://stackoverflow.com/questions/79124951/type-error-in-next-js-route-type-params-id-string-does-not-satis
+async function PostDetailPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const response: any = await getData(id);
+
+  return <PostDetail {...response.data} />;
+}
+
+export default PostDetailPage;

@@ -8,7 +8,8 @@ import Loading from "@/app/components/atoms/Loading";
 import ErrorMessage from "@/app/components/atoms/ErrorMessage";
 import { Post } from "@/app/models/posts/types";
 
-interface PostDetailProps extends Post {}
+// interface PostDetailProps extends Post {}
+type PostDetailProps = Post;
 
 const PostDetail: React.FC<PostDetailProps> = (post) => {
   const {
