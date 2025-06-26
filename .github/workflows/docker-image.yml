@@ -32,6 +32,9 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
+    - name: List files before docker build
+      run: ls -al
+
     - name: Build and push to dockerhub
       uses: docker/build-push-action@v6
       with:
