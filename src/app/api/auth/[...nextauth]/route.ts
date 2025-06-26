@@ -16,7 +16,7 @@ const handler = NextAuth({
         username: { label: "Username", type: "text" },
         password: { label: "Password", type: "password" },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials, _req) {
         if (!credentials || !credentials?.username || !credentials?.password) {
           return null;
         }
@@ -29,7 +29,7 @@ const handler = NextAuth({
     }),
   ],
   callbacks: {
-    async jwt({ token, account, user }) {
+    async jwt({ token, account: _account, user }) { // remove var account
       if (user) {
         return toToken(user);
       }
@@ -44,7 +44,7 @@ const handler = NextAuth({
         });
 
         return toToken(response);
-      } catch (error) {
+      } catch {
         return {
           ...token,
           error: "RefreshAccessTokenError" as const,

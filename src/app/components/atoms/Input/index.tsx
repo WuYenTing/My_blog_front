@@ -37,7 +37,9 @@ const Input: React.FunctionComponent<InputProps> = ({
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
-    onChangeText && onChangeText(value);
+    if (onChangeText) {
+      onChangeText(value);
+    }
   };
 
   return (

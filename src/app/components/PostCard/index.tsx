@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Button from "../atoms/Button";
-import Image from "next/image";
 
 interface PostItemProps {
   id: string;
@@ -18,12 +17,12 @@ interface PostItemProps {
 
 const PostCard: React.FC<PostItemProps> = ({
   id,
-  tag,
+  tag:_tag,
   title,
   description,
   content,
-  category,
-  createdAt,
+  category:_category,
+  createdAt:_createdAt,
   onUpdate,
   onDelete,
 }) => {
