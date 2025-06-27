@@ -3,6 +3,8 @@ ARG DEBIAN_VERSION=bullseye-slim
 
 ARG RUNNER_IMAGE="node:${NODE_VERSION}-${DEBIAN_VERSION}"
 
+FROM ${RUNNER_IMAGE} as runner
+
 WORKDIR /app
 
 COPY .next .next
