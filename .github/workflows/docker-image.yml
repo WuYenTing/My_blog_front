@@ -29,10 +29,9 @@ jobs:
           DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@roting-db/${{ secrets.POSTGRES_DB }}
         ports:
           - 4000:4000
+        run: docker exec roting-server ./bin/migrate
 
     steps:
-    - name: Run command in roting-server
-      run: docker exec roting-server ./bin/migrate
 
     - uses: actions/checkout@v4
     - name: Build the Docker image
