@@ -47,6 +47,7 @@ jobs:
         node-version: 24
 
     - name: Install frontend dependencies
+      uses: actions/checkout@v4
       run: npm ci
 
     - name: Build frontend
