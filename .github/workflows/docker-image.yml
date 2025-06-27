@@ -26,7 +26,7 @@ jobs:
         image: ap95071/rotingtest:latest
         env:
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-          DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@roting-db/${{ secrets.POSTGRES_DB }}
+          DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@phoenix-db/${{ secrets.POSTGRES_DB }}
         ports:
           - 4000:4000
         options: --name phoenix-server
