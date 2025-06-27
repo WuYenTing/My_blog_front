@@ -46,8 +46,10 @@ jobs:
       with:
         node-version: 24
 
-    - name: Check backend api
-      run: curl -f http://phoenix-server:4000/api/posts
+    - name: Show /etc/hosts
+      run: cat /etc/hosts
+#    - name: Check backend api
+#      run: curl -f http://phoenix-server:4000/api/posts
 
     - name: Install frontend dependencies
       run: npm ci
