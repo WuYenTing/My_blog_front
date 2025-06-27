@@ -3,7 +3,8 @@ docker pull ap95071/rotingfronttest
 docker run \
 --name phoenix-front \
 --network roting-network \
--e NEXTAUTH_SECRET=GlwEZYFUuyG4t/gOKYYGWwZ+2UiER70FLzsY7HhSRFg= \
+-e NEXTAUTH_SECRET= \
+-e HOSTNAME="localhost" \
 -p 3000:3000 \
 -d ap95071/rotingfronttest:latest
 
