@@ -29,7 +29,6 @@ jobs:
           DATABASE_URL: ecto://${POSTGRES_USER}:${POSTGRES_PASSWORD}@roting-db/${POSTGRES_DB}
         ports:
           - 4000:4000
-        command: ["/app/bin/server", "/app/bin/migrate"]
 
     steps:
     - uses: actions/checkout@v4
