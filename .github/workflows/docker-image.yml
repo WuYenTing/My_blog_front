@@ -55,7 +55,7 @@ jobs:
 
     - name: Build frontend
       env:
-        NEXT_PUBLIC_API_URL: http://roting-server:4000
+        NEXT_PUBLIC_API_URL: http://localhost:4000
       run: npm run build
 
     - name: Login to dockerhub
