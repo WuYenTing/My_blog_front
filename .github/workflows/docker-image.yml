@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
 
     services:
-      roting-db:
+      phoenix-db:
         image: postgres:17
         env:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -21,7 +21,6 @@ jobs:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         ports:
           - 5432:5432
-        options: --name roting-db
 
       phoenix-server:
         image: ap95071/rotingtest:latest
