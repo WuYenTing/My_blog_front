@@ -48,7 +48,7 @@ jobs:
         node-version: 24
 
     - name: Curl backend
-      run: curl -f http://roting-server:4000
+      run: curl -f http://roting-server:4000/api/posts
 
     # - name: Install frontend dependencies
     #   run: npm ci
