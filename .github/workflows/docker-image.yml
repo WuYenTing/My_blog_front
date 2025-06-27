@@ -29,7 +29,7 @@ jobs:
           DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@phoenix-db/${{ secrets.POSTGRES_DB }}
         ports:
           - 4000:4000
-        options: --name phoenix-server
+        options: --name phx-server
         
 
     steps:
@@ -39,7 +39,7 @@ jobs:
       run: docker ps -a
 
     - name: Migrate the roting-db
-      run: docker exec phoenix-server ./bin/migrate
+      run: docker exec phx-server ./bin/migrate
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
