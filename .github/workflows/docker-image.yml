@@ -34,14 +34,26 @@ jobs:
         
 
     steps:
-    - name: Run command in roting-server
+    - uses: actions/checkout@v4
+
+    - name: Check services container
       run: docker ps -a
-    - name: Run command in roting-server
+
+    - name: Migrate the roting-db
       run: docker exec roting-server ./bin/migrate
 
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --progress=plain --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Set up Node.js
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 24
+
+    - name: Install frontend dependencies
+      run: npm ci
+
+    - name: Build frontend
+      env:
+        NEXT_PUBLIC_API_URL: http://roting-server:4000
+      run: npm build
 
     - name: Login to dockerhub
       uses: docker/login-action@v3
@@ -58,13 +70,11 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    
-
     - name: Build and push to dockerhub
       uses: docker/build-push-action@v6
       with:
-         context: .
-         platforms: linux/amd64, linux/arm64
-         push: true
-         tags: ${{ secrets.DOCKERHUB_USERNAME }}/rotingfronttest:latest
-         
+        context: .
+        file: Dockerfile
+        platforms: linux/amd64, linux/arm64
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/rotingfronttest:latest
