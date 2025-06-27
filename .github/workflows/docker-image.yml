@@ -23,7 +23,7 @@ jobs:
           - 5432:5432
 
       roting-server:
-        image: ${{ secrets.DOCKERHUB_USERNAME }}/rotingtest:latest
+        image: ap95071/rotingtest:latest
         env:
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
           DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@roting-db/${{ secrets.POSTGRES_DB }}
