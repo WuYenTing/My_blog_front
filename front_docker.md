@@ -4,7 +4,8 @@ docker run \
 --name phoenix-front \
 --network roting-network \
 -e NEXTAUTH_SECRET= \
--e HOSTNAME="localhost" \
+-e NEXT_PUBLIC_API_URL=http://{backend hostname (container name)}:4000 \
+-e API_URL=http://{backend hostname (container name)}:4000 \
 -p 3000:3000 \
 -d ap95071/rotingfronttest:latest
 
