@@ -30,7 +30,7 @@ jobs:
           DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@roting-db/${{ secrets.POSTGRES_DB }}
         ports:
           - 4000:4000
-        options: --name roting-server
+        options: --name phoenix-server
         
 
     steps:
