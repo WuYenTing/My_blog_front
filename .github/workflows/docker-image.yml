@@ -23,7 +23,7 @@ jobs:
           - 5432:5432
         options: --name roting-db
 
-      roting-server:
+      phoenix-server:
         image: ap95071/rotingtest:latest
         env:
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
