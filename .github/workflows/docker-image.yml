@@ -33,6 +33,8 @@ jobs:
 
     steps:
     - name: Run command in roting-server
+      run: docker ps -a
+    - name: Run command in roting-server
       run: docker exec roting-server /bin/migrate
 
     - uses: actions/checkout@v4
