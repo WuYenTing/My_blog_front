@@ -14,7 +14,6 @@ jobs:
 
     services:
       roting-db:
-        name: roting-db
         image: postgres:17
         env:
           POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
@@ -24,13 +23,13 @@ jobs:
           - 5432:5432
 
       roting-server:
-        name: roting-server
         image: ap95071/rotingtest:latest
         env:
           SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
           DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@roting-db/${{ secrets.POSTGRES_DB }}
         ports:
           - 4000:4000
+        options: --name roting-server
         
 
     steps:
