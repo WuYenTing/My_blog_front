@@ -14,4 +14,4 @@ COPY public ./public
 ENV NODE_ENV=production
 EXPOSE 3000
 
-CMD ["node", ".next/standalone/server.js"]
+CMD ["node", "server.js"]
