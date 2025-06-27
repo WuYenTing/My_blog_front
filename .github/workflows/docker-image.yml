@@ -40,7 +40,7 @@ jobs:
       run: docker ps -a
 
     - name: Migrate the roting-db
-      run: docker exec roting-server ./bin/migrate
+      run: docker exec phoenix-server ./bin/migrate
 
     - name: Set up Node.js
       uses: actions/setup-node@v4
@@ -78,7 +78,6 @@ jobs:
       with:
         context: .
         file: Dockerfile
-        build-args: NEXT_PUBLIC_API_URL=http://phoenix-server:4000
         platforms: linux/amd64, linux/arm64
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/rotingfronttest:latest
