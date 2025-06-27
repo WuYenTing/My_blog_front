@@ -47,37 +47,37 @@ jobs:
       with:
         node-version: 24
 
-    - name: Curl backend
+    - name: Check backend api
       run: curl -f http://localhost:4000/api/posts
 
-    # - name: Install frontend dependencies
-    #   run: npm ci
+    - name: Install frontend dependencies
+      run: npm ci
 
-    # - name: Build frontend
-    #   env:
-    #     NEXT_PUBLIC_API_URL: http://roting-server:4000
-    #   run: npm run build
+    - name: Build frontend
+      env:
+        NEXT_PUBLIC_API_URL: http://roting-server:4000
+      run: npm run build
 
-    # - name: Login to dockerhub
-    #   uses: docker/login-action@v3
-    #   with:
-    #     username: ${{ secrets.DOCKERHUB_USERNAME }}
-    #     password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Login to dockerhub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    #   # Add support for more platforms with QEMU (optional)
-    #   # https://github.com/docker/setup-qemu-action
+      # Add support for more platforms with QEMU (optional)
+      # https://github.com/docker/setup-qemu-action
 
-    # - name: Set up QEMU
-    #   uses: docker/setup-qemu-action@v3
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
 
-    # - name: Set up Docker Buildx
-    #   uses: docker/setup-buildx-action@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
 
-    # - name: Build and push to dockerhub
-    #   uses: docker/build-push-action@v6
-    #   with:
-    #     context: .
-    #     file: Dockerfile
-    #     platforms: linux/amd64, linux/arm64
-    #     push: true
-    #     tags: ${{ secrets.DOCKERHUB_USERNAME }}/rotingfronttest:latest
+    - name: Build and push to dockerhub
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: Dockerfile
+        platforms: linux/amd64, linux/arm64
+        push: true
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/rotingfronttest:latest
