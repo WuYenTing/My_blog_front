@@ -21,6 +21,7 @@ jobs:
           POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
         ports:
           - 5432:5432
+        options: --name roting-db
 
       roting-server:
         image: ap95071/rotingtest:latest
@@ -36,7 +37,7 @@ jobs:
     - name: Run command in roting-server
       run: docker ps -a
     - name: Run command in roting-server
-      run: docker exec roting-server /bin/migrate
+      run: docker exec roting-server ./bin/migrate
 
     - uses: actions/checkout@v4
     - name: Build the Docker image
