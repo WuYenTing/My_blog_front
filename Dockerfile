@@ -7,10 +7,9 @@ FROM ${RUNNER_IMAGE} as runner
 
 WORKDIR /app
 
-COPY .next .next
-COPY public public
-COPY node_modules node_modules
-COPY package.json .
+COPY .next/standalone ./
+COPY .next/static ./.next/static
+COPY public ./public
 
 ENV NODE_ENV=production
 EXPOSE 3000
