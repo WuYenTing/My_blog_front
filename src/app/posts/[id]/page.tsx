@@ -1,8 +1,8 @@
 import PostDetail from "./PostDetail";
 
 async function getData(id: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`);
-  
+  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`);
+  const res = await fetch(`${process.env.API_URL}/api/posts/${id}`);
   if (!res.ok) {
     return [];
   }
