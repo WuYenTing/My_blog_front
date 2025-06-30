@@ -3,8 +3,7 @@ import { PostDto } from "../models/posts/types";
 import PostList from "../posts/PostList";
 
 const getData = async () => {
-  // const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts` as string);
-  const res = await fetch(`${process.env.API_URL}/api/posts` as string);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts` as string);
   if (!res.ok) {
     return [];
   }
