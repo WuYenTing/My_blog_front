@@ -12,54 +12,54 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    services:
-      phoenix-db:
-        image: postgres:17
-        env:
-          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-          POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-        ports:
-          - 5432:5432
+    # services:
+    #   phoenix-db:
+    #     image: postgres:17
+    #     env:
+    #       POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+    #       POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+    #       POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+    #     ports:
+    #       - 5432:5432
 
-      phoenix-server:
-        image: ap95071/rotingtest:latest
-        env:
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-          DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@phoenix-db/${{ secrets.POSTGRES_DB }}
-        ports:
-          - 4000:4000
-        options: --name phx-server
+    #   phoenix-server:
+    #     image: ap95071/rotingtest:latest
+    #     env:
+    #       SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+    #       DATABASE_URL: ecto://${{ secrets.POSTGRES_USER }}:${{ secrets.POSTGRES_PASSWORD }}@phoenix-db/${{ secrets.POSTGRES_DB }}
+    #     ports:
+    #       - 4000:4000
+    #     options: --name phx-server
         
 
     steps:
     - uses: actions/checkout@v4
 
-    - name: Check services container
-      run: docker ps -a
+    # - name: Check services container
+    #   run: docker ps -a
 
-    - name: Migrate the roting-db
-      run: docker exec phx-server ./bin/migrate
+    # - name: Migrate the roting-db
+    #   run: docker exec phx-server ./bin/migrate
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 24
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v4
+    #   with:
+    #     node-version: 24
 
-    - name: Show /etc/hosts
-      run: cat /etc/hosts
+    # - name: Show /etc/hosts
+    #   run: cat /etc/hosts
 
-    - name: Check backend api
-      run: curl -f http://localhost:4000/api/posts
+    # - name: Check backend api
+    #   run: curl -f http://localhost:4000/api/posts
 
-    - name: Install frontend dependencies
-      run: npm ci
+    # - name: Install frontend dependencies
+    #   run: npm ci
 
-    - name: Build frontend
-      env:
-        NEXT_PUBLIC_API_URL: http://localhost:4000
-        API_URL: http://localhost:4000
-      run: npm run build
+    # - name: Build frontend
+    #   env:
+    #     NEXT_PUBLIC_API_URL: http://localhost:4000
+    #     API_URL: http://localhost:4000
+    #   run: npm run build
 
     - name: Login to dockerhub
       uses: docker/login-action@v3
@@ -80,7 +80,8 @@ jobs:
       uses: docker/build-push-action@v6
       with:
         context: .
-        file: Dockerfile
+        file: dockerfile
+        # file: Dockerfile
         platforms: linux/amd64, linux/arm64
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/rotingfronttest:latest
