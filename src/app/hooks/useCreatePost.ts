@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "../axios";
 import { Post, PostDto } from "../models/posts/types";
 import { toModel } from "../models/posts";
+import axiosInstance from "../axios";
 
 export type CreatePostParams = Pick<
   Post,
@@ -12,8 +13,8 @@ export type CreatePostParams = Pick<
 
 const onMutate = async (params: CreatePostParams) => {
   const { title, description, content, category, tag, accessToken } = params;
-
-  const response = await axios.post<{
+  // const response = await axios.post
+  const response = await axiosInstance.post<{
     data: PostDto;
   }>(
     `/api/my-posts`,
