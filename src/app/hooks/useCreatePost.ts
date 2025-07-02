@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import axios from "../axios";
+// import axios from "../axios";
 import { Post, PostDto } from "../models/posts/types";
 import { toModel } from "../models/posts";
 import axiosInstance from "../axios";
