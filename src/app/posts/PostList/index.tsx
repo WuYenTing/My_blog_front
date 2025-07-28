@@ -40,7 +40,7 @@ const PostList: React.FC<PostListProps> = ({ posts }) => {
         <div className="mx-auto max-w-7xl px-6 lg:px-8 space-y-4">
           <div className="">
           </div>
-          <Introduction title="From the RoTing" slogan="Learn by trying. Grow by exploring." subslogan="Route it. Learn it. Share it."/>
+          <Introduction title="From the Tingress" slogan="The Ingress to Ting’s Thoughts and Tech." subslogan="The Gateway Is Open."/>
           <div className="flex justify-center">
               <Button
                 className=""
