@@ -40,5 +40,8 @@ jobs:
         platforms: linux/amd64, linux/arm64
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/tingress-front:${{ steps.vars.outputs.sha_short }}
+        build-args: |
+          NEXT_PUBLIC_API_URL=${{ secrets.NEXT_PUBLIC_API_URL }}
+          API_URL=${{ secrets.PUBLIC_API_URL }}
         cache-from: type=gha
         cache-to: type=gha,mode=max
