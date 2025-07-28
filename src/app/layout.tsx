@@ -12,7 +12,7 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'RoTing.co',
+  title: 'Tingress.com',
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
         <AuthContext>
           <QueryContext>
             <div className="min-h-full">
-              <Header title="RoTing"/>
+              <Header title="Tingress"/>
               {children}
               <Footer />
             </div>
