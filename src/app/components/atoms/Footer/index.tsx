@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
           </Link>
         </div>
         <div className="flex justify-center text-gray-200/60 space-x-2">
-            <p>@2025 RoTing, All rights reserved.</p>
+            <p>@2025 Tingress, All rights reserved.</p>
             <div className="flex justify-center space-x-4 text-sm text-emerald-50/50">
             </div>
         </div>
