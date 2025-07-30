@@ -2,7 +2,8 @@ import PostDetail from "./PostDetail";
 
 async function getData(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`, {
-    cache: "no-store"});
+    cache: "no-store",
+  });
 
   if (!res.ok) {
     throw new Error("Failed to fetch post data.");
@@ -11,15 +12,8 @@ async function getData(id: string) {
   return res.json();
 }
 
-interface PostDetailProps {
-  params: {
-    id: string;
-  };
-}
-
-const PostDetailPage = async ({ params }: PostDetailProps) => {
+const PostDetailPage = async ({ params }: { params: { id: string } }) => {
   const data = await getData(params.id);
-
   return <PostDetail {...data.data} />;
 };
 
