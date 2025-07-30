@@ -12,8 +12,12 @@ async function getData(id: string) {
   return res.json();
 }
 
-const PostDetailPage = async ({ params }: { params: { id: string } }) => {
+const PostDetailPage = async (
+  props: Promise<{ params: { id: string } }>
+) => {
+  const { params } = await props;
   const data = await getData(params.id);
+
   return <PostDetail {...data.data} />;
 };
 
