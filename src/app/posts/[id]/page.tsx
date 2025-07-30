@@ -1,3 +1,5 @@
+import { type PageProps } from 'next';
+
 import PostDetail from "./PostDetail";
 
 async function getData(id: string) {
@@ -12,12 +14,9 @@ async function getData(id: string) {
   return res.json();
 }
 
-const PostDetailPage = async (props: Promise<{ params: { id: string } }>) => {
-  const { params } = await props;
+const PostDetailPage = async ({ params }: PageProps<{ id: string }>) => {
   const data = await getData(params.id);
-
   return <PostDetail {...data.data} />;
 };
-
 
 export default PostDetailPage;
