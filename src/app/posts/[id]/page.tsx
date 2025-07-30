@@ -21,7 +21,7 @@ async function getData(id: string) {
 }
 
 const PostDetailPage: React.FC<PostDetailProps> = async ({ params }) => {
-  const { id } = params || {};
+  const { id } = await params;
   const response: any = await getData(id);
 
   return <PostDetail {...response.data} />;
