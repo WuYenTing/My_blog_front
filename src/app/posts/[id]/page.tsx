@@ -1,24 +1,30 @@
 import PostDetail from "./PostDetail";
+// import { Post } from "@/models/posts/types";
+
+interface PostDetailProps {
+  params: {
+    id: string;
+  };
+}
 
 async function getData(id: string) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`, {
+  const res = await fetch(`${process.env.API_URL}/api/posts/${id}`, {
     cache: "no-store",
+    next: { revalidate: 0 },
   });
 
   if (!res.ok) {
-    throw new Error("Failed to fetch post data.");
+    return [];
   }
 
   return res.json();
 }
 
-type Props = {
-  params: {
-    id: string;
-  };
+const PostDetailPage: React.FC<PostDetailProps> = async ({ params }) => {
+  const { id } = params || {};
+  const response: any = await getData(id);
+
+  return <PostDetail {...response.data} />;
 };
 
-export default async function PostDetailPage({ params }: Props) {
-  const data = await getData(params.id);
-  return <PostDetail {...data.data} />;
-}
+export default PostDetailPage;
