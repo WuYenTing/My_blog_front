@@ -1,9 +1,7 @@
 import PostDetail from "./PostDetail";
 
 interface PostDetailProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 }
 
 async function getData(id: string) {
