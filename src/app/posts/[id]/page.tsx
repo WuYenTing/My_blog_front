@@ -12,13 +12,7 @@ async function getData(id: string) {
   return res.json();
 }
 
-interface ParamsType {
-  params: {
-    id: string;
-  };
-}
-
-const PostDetailPage = async (props: Promise<ParamsType>) => {
+const PostDetailPage = async (props: Promise<{ params: { id: string } }>) => {
   const { params } = await props;
   const data = await getData(params.id);
 
