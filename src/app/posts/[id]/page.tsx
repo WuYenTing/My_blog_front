@@ -2,7 +2,7 @@ import PostDetail from "./PostDetail";
 
 async function getData(id: string) {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/posts/${id}`, {
-    cache: "no-store",
+    cache: "no-store"
   });
 
   if (!res.ok) {
@@ -12,12 +12,8 @@ async function getData(id: string) {
   return res.json();
 }
 
-const PostDetailPage = async (
-  props: Promise<{ params: { id: string } }>
-) => {
-  const { params } = await props;
+const PostDetailPage = async ({ params }: { params: { id: string } }) => {
   const data = await getData(params.id);
-
   return <PostDetail {...data.data} />;
 };
 
